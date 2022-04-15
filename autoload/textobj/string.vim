@@ -6,22 +6,22 @@ function! textobj#string#parse(xs) abort
 	while j <= last
 		let found = v:false
 		let k = j + 1
-		if '"' == a:xs[j]
+		if s:is_double(a:xs[j])
 			while k <= last
-				if '\' == a:xs[k]
+				if s:is_backslash(a:xs[k])
 					let k += 2
-				elseif '"' == a:xs[k]
+				elseif s:is_double(a:xs[k])
 					let found = v:true
 					break
 				else
 					let k += 1
 				endif
 			endwhile
-		elseif "'" == a:xs[j]
+		elseif s:is_single(a:xs[j])
 			while k <= last
-				if ("'" == a:xs[k]) && ("'" == get(a:xs, k + 1, ''))
+				if s:is_single(a:xs[k]) && s:is_single(get(a:xs, k + 1, ''))
 					let k += 2
-				elseif "'" == a:xs[k]
+				elseif s:is_single(a:xs[k])
 					let found = v:true
 					break
 				else
@@ -40,5 +40,17 @@ function! textobj#string#parse(xs) abort
 		endif
 	endwhile
 	return pairs
+endfunction
+
+function! s:is_backslash(x) abort
+	return '/' == a:x
+endfunction
+
+function! s:is_single(x) abort
+	return "'" == a:x
+endfunction
+
+function! s:is_double(x) abort
+	return '"' == a:x
 endfunction
 
