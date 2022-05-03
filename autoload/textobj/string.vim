@@ -43,7 +43,7 @@ function! textobj#string#parse(xs) abort
 endfunction
 
 function! s:is_backslash(x) abort
-	return '/' == a:x
+	return '\' == a:x
 endfunction
 
 function! s:is_single(x) abort
