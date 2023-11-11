@@ -32,7 +32,7 @@ function! textobj#string#parse(xs) abort
             let k += 1
             while k <= last
                 if s:is_double(a:xs[k])
-                    if s:is_single(get(a:xs, k + 1, ''))
+                    if s:is_double(get(a:xs, k + 1, ''))
                         let k += 2
                     else
                         let found = v:true
