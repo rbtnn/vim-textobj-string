@@ -28,6 +28,12 @@ Plug 'rbtnn/vim-textobj-string'
 Plug 'kana/vim-textobj-user'
 ```
 
+## Supported strings
+
+* Single Quoted strings: `'abc''def'`
+* Double Quoted strings: `"abc\"def"`
+* Verbatim Strings in C#: `@"abc""def"`
+
 ## Requirements
 
 * [kana/vim-textobj-user](https://github.com/kana/vim-textobj-user)
